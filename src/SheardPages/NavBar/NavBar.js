@@ -28,6 +28,12 @@ const NavBar = () => {
                 <Link to='/addservice' className='mr-5 hover:text-gray-900'>
                     ADD SERVICE
                 </Link>
+                <Link to='/signup' className='mr-5 hover:text-gray-900'>
+                    SIGNUP
+                </Link>
+                <Link to='/signin' className='mr-5 hover:text-gray-900'>
+                    SIGNIN
+                </Link>
                 {/* <>
                     {
                     user?.uid?

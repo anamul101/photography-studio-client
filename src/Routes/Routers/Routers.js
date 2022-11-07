@@ -5,6 +5,8 @@ import ErrorPage from "../../Pages/ErrorPage/ErrorPage";
 import Home from "../../Pages/Home/Home";
 import MyReviews from "../../Pages/MyReviews/MyReviews";
 import Services from "../../Pages/Services/Services";
+import SignIn from "../../Pages/SignIn/SignIn";
+import SignUp from "../../Pages/SignUp/SignUp";
 
 
 const { createBrowserRouter } = require("react-router-dom");
@@ -38,6 +40,14 @@ export const router = createBrowserRouter([
             {
                 path:'/addservice',
                 element:<AddService></AddService>
+            },
+            {
+                path:'/signup',
+                element:<SignUp></SignUp>
+            },   
+            {
+                path:'/signin',
+                element:<SignIn></SignIn>
             }   
             
         ]
