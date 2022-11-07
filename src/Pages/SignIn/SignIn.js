@@ -5,6 +5,10 @@ import SocialLognIn from '../../SheardPages/SocialLognIn/SocialLognIn';
 const SignIn = () => {
     const handelSubmit=(event)=>{
         event.preventDefault();
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        console.log(email,password)
     }
     return (
         <>
@@ -22,7 +26,7 @@ const SignIn = () => {
                         </div>
                     </form>
                     <p className='text-center'>If you New in this site please <Link className='font-bold text-orange-600 hover:underline' to='/signup'>Sign Up</Link></p>
-                    <div className='m-auto mt-5 text-2xl font-bold'>
+                    <div className=' mt-5 text-2xl font-bold'>
                         <SocialLognIn></SocialLognIn>
                     </div>
                 </div>

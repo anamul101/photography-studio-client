@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import SocialLognIn from '../../SheardPages/SocialLognIn/SocialLognIn';
 
 const SignUp = () => {
     const handelSubmit=(event)=>{
@@ -33,9 +34,9 @@ const SignUp = () => {
                         </div>
                     </form>
                     <p className='text-center'>Already have an account? <Link className='font-bold text-orange-600 hover:underline' to='/signin'>SignIn</Link></p>
-                    {/* <div className='m-auto mt-5 text-2xl font-bold'>
+                    <div className=' mt-5 text-2xl font-bold'>
                         <SocialLognIn></SocialLognIn>
-                    </div> */}
+                    </div>
                 </div>
         </>
     );
