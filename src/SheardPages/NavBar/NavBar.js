@@ -22,6 +22,12 @@ const NavBar = () => {
                 <Link to='/blog' className='mr-5 hover:text-gray-900'>
                     BLOG
                 </Link>
+                <Link to='/reviews' className='mr-5 hover:text-gray-900'>
+                    MY REVIEWS
+                </Link>
+                <Link to='/addservice' className='mr-5 hover:text-gray-900'>
+                    ADD SERVICE
+                </Link>
                 {/* <>
                     {
                     user?.uid?
