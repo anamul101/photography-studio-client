@@ -1,7 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Contexts/AuthProvider';
 
 const NavBar = () => {
+    const {user,LogOut} = useContext(AuthContext);
+    const handelLogout=()=>{
+        LogOut()
+            .then(()=>{
+                toast.success('You Logout from this website')
+            })
+            .catch(error=>console.error(error))
+    }
     return (
         <div className='container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center bg-base-300'>
             <Link
@@ -22,19 +32,15 @@ const NavBar = () => {
                 <Link to='/blog' className='mr-5 hover:text-gray-900'>
                     BLOG
                 </Link>
-                <Link to='/reviews' className='mr-5 hover:text-gray-900'>
-                    MY REVIEWS
-                </Link>
-                <Link to='/addservice' className='mr-5 hover:text-gray-900'>
-                    ADD SERVICE
-                </Link>
-                <Link to='/signup' className='mr-5 hover:text-gray-900'>
-                    <button className="btn">SIGNUP</button>
-                </Link>
-                <Link to='/signin' className='mr-5 hover:text-gray-900'>
-                    <button className="btn">SIGNIN</button>
-                </Link>
-                {/* <>
+                {
+                    user?.uid &&
+                    <>
+                    <Link to='/reviews' className='mr-5 hover:text-gray-900'>MY REVIEWS</Link>
+                    <Link to='/addservice' className='mr-5 hover:text-gray-900'>ADD SERVICE</Link>
+                    </>
+                }
+                
+                <>
                     {
                     user?.uid?
                     <> 
@@ -42,21 +48,20 @@ const NavBar = () => {
                         <div className="tooltip tooltip-bottom cursor-pointer" data-tip={user?.displayName}>  
                             <img src={user?.photoURL} style={{height:'40px'}} className="rounded-full mr-4" alt="" /> 
                         </div>
-                        <button onClick={handelLogOut} className='btn btn-outline btn-error mr-2'>
-                        Logout
-                        </button>
+                        <button onClick={handelLogout} className="btn border border-orange-500 bg-orange-500 hover:bg-orange-800">LogOut</button>
                     </>
                     :
                     <>
-                    <button className='btn btn-outline btn-primary mr-2'>
-                        <Link to='/lognin'>Login</Link>
-                        </button>
-                        <button className='btn btn-outline btn-secondary'>
-                        <Link to='/register'>Register</Link>
-                        </button>
+                        <Link to='/signin' className='mr-5 hover:text-gray-900'>
+                            <button className="btn">SIGNIN</button>
+                        </Link>
+
+                        <Link to='/signup' className='mr-5 hover:text-gray-900'>
+                            <button className="btn">SIGNUP</button>
+                        </Link> 
                     </>
                     }
-                </> */}
+                </>
                 </nav>
       </div>
     );

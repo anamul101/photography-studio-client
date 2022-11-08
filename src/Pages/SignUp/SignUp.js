@@ -1,12 +1,13 @@
 
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider';
 import SocialLognIn from '../../SheardPages/SocialLognIn/SocialLognIn';
 import toast from 'react-hot-toast';
 
 const SignUp = () => {
-    const {createUser,authUpdate} = useContext(AuthContext)
+    const {createUser,authUpdate} = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const handelSubmit=(event)=>{
         event.preventDefault();
@@ -22,7 +23,8 @@ const SignUp = () => {
                 console.log(user);
                 profileUpdate(name,photourl);
                 form.reset();
-                toast.success('SignUp Successfully')
+                toast.success('SignUp Successfully');
+                navigate('/signin')
             })
             .catch(error=>{
                 console.error(error.message);

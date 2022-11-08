@@ -1,26 +1,57 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import toast from 'react-hot-toast';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../Contexts/AuthProvider';
 import SocialLognIn from '../../SheardPages/SocialLognIn/SocialLognIn';
 
 const SignIn = () => {
+    const [reserPassword, setResetPassword] = useState('');
+    const {authLognIn,forgetPassword} = useContext(AuthContext);
+    const navigate = useNavigate()
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
+
     const handelSubmit=(event)=>{
         event.preventDefault();
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email,password)
+        // console.log(email,password)
+        authLognIn(email,password)
+            .then(result=>{
+                const user = result.user;
+                console.log(user);
+                form.reset();
+                toast.success('Your LognIn Successfull');
+                navigate(from, {replace:true});
+            })
+            .catch(error=>{
+                toast.error(error.message);
+            })
     }
+    const handelaReset = ()=>{
+        forgetPassword(reserPassword)
+         .then(()=>{
+           toast.success('Reset password link hase been send your email')
+           
+         })
+         .catch(error=>{
+           const showError = error.message;
+           toast.error(showError);
+         })
+     }
     return (
         <>
              <div className="rounded-md flex-shrink-0 mx-auto w-full max-w-sm my-10 bg-base-100 pb-20 border border-orange-600">
                     <h1 className="text-4xl font-bold text-center pt-5">SignIn</h1>
                     <form onSubmit={handelSubmit} className="card-body">
                         <div className="form-control">
-                            <input type="email" placeholder="Enter email" name="email" className="input input-bordered" required/>
+                            <input onBlur={(e)=>setResetPassword(e.target.value)} type="email" placeholder="Enter email" name="email" className="input input-bordered" required/>
                         </div>
                         <div className="form-control">
                             <input type="password" name="password" placeholder="Type password" className="input input-bordered" required/>
                         </div>
+                        <p onClick={handelaReset} className='font-bold text-light hover:underline hover:text-blue-600 cursor-pointer'>Reset Password</p>
                         <div className="form-control mt-6">
                             <input className="btn btn-primary" type="submit" value="SignUp" />
                         </div>

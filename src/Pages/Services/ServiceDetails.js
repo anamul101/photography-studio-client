@@ -1,4 +1,5 @@
 
+import { PhotoView } from 'react-photo-view';
 import { Link, useLoaderData } from 'react-router-dom';
 
 const ServiceDetails = () => {
@@ -16,6 +17,9 @@ const ServiceDetails = () => {
         <>
         <p className='text-2xl font-bold text-center mt-12 text-orange-600'><p className='text-black text-4xl font-bold'>Searvice of Name:</p> {title}</p>
         <div className="lg:w-2/3 bg-base-400 mx-auto border border-gray-400 my-12 rounded-md">
+        {/* <PhotoView src={img}>
+            <img src={img} style={{ objectFit: 'cover' }} alt="" />
+        </PhotoView> */}
         <figure><img src={img} alt="Photography wedding" /></figure>
             <div className="card-body">
                 <h2 className="card-title flex justify-between items-center">
