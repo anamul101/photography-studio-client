@@ -4,6 +4,7 @@ import Blog from "../../Pages/Blog/Blog";
 import ErrorPage from "../../Pages/ErrorPage/ErrorPage";
 import Home from "../../Pages/Home/Home";
 import MyReviews from "../../Pages/MyReviews/MyReviews";
+import ServiceDetails from "../../Pages/Services/ServiceDetails";
 import Services from "../../Pages/Services/Services";
 import SignIn from "../../Pages/SignIn/SignIn";
 import SignUp from "../../Pages/SignUp/SignUp";
@@ -48,6 +49,10 @@ export const router = createBrowserRouter([
             {
                 path:'/signin',
                 element:<SignIn></SignIn>
+            },   
+            {
+                path:'/serviceDetails/:id',
+                element:<ServiceDetails></ServiceDetails>
             }   
             
         ]
