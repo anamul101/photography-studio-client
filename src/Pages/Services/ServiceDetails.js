@@ -1,12 +1,50 @@
 
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 
 const ServiceDetails = () => {
-    const {title}= useLoaderData();
+    const {title,img,description,price,rating,_id}= useLoaderData();
+
+    const handelReview=(event)=>{
+        event.preventDefault();
+        const email=event.target.email.value;
+        const serviceName=event.target.serviceName.value;
+        const reviewText=event.target.reviewText.value;
+        console.log(email,serviceName,reviewText);
+        event.target.reset();
+    }
     return (
-        <div>
-            <h1>details :{title}</h1>
+        <>
+        <p className='text-2xl font-bold text-center mt-12 text-orange-600'><p className='text-black text-4xl font-bold'>Searvice of Name:</p> {title}</p>
+        <div className="lg:w-2/3 bg-base-400 mx-auto border border-gray-400 my-12 rounded-md">
+        <figure><img src={img} alt="Photography wedding" /></figure>
+            <div className="card-body">
+                <h2 className="card-title flex justify-between items-center">
+                <p className='text-3xl font-bold'>{title}</p>
+                <div className="badge badge-secondary flex justify-between"><p>Pating</p> <p>{rating}</p></div>
+                </h2>
+                <h2 className='text-xl font-bold text-orange-500'>Price: ${price}</h2>
+                <p className='text-gray-700'>{description}</p>
+                <div className="card-actions justify-end">
+                    <Link to={`/serviceDetails/${_id}`}>
+                        <button className="btn btn-outline btn-warning">service Details</button>
+                    </Link>
+                </div>
+            </div>
         </div>
+        <section className='lg:w-2/3 mx-auto mb-12 '>
+            <h1 className='text-4xl font-bold text-center my-8'>Reviews</h1>
+        <form onSubmit={handelReview}>
+        <input type="text" placeholder="Type here" name='serviceName' defaultValue={title} readOnly className="input input-ghost text-center w-full" disabled /> <br />
+            <div className='mt-4 text-center'>
+                <input type="text" placeholder="Email" name='email' className="input input-bordered mb-2 input-warning w-1/2 " /> <br />
+                <textarea className="textarea textarea-warning w-1/2 h-60" name='reviewText' placeholder="Give your best Reviews..."></textarea>
+            </div>
+            <div className="form-control w-1/2 mx-auto">
+                <input className="btn btn-warning hover:bg-orange-500 mt-4" type="submit" value="Add Reviews" />
+            </div>
+        </form>
+        </section>
+        </>
     );
 };
 
