@@ -17,11 +17,6 @@ const AuthProvider = ({children}) => {
         setLoader(true)
         return signInWithPopup(auth,provider);
     }
-    // GitHub sign in 
-    const authSignInGithub = (provider)=>{
-        setLoader(true)
-        return signInWithPopup(auth, provider);
-    }
     // form with register
     const createUser = (email,password)=>{
         setLoader(true)
@@ -65,7 +60,6 @@ const AuthProvider = ({children}) => {
         authLognIn,
         authUpdate,
         setLoader,
-        authSignInGithub,
         setUser,
         forgetPassword
     };

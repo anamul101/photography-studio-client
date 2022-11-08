@@ -1,8 +1,13 @@
-import React from 'react';
+
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Contexts/AuthProvider';
 import SocialLognIn from '../../SheardPages/SocialLognIn/SocialLognIn';
+import toast from 'react-hot-toast';
 
 const SignUp = () => {
+    const {createUser,authUpdate} = useContext(AuthContext)
+
     const handelSubmit=(event)=>{
         event.preventDefault();
         const form = event.target;
@@ -10,7 +15,27 @@ const SignUp = () => {
         const photourl = form.photoURL.value;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(name,photourl,email,password);
+        // console.log(name,photourl,email,password);
+        createUser(email,password)
+            .then(result=>{
+                const user = result.user;
+                console.log(user);
+                profileUpdate(name,photourl);
+                form.reset();
+                toast.success('SignUp Successfully')
+            })
+            .catch(error=>{
+                console.error(error.message);
+            })
+    }
+    const profileUpdate =(name,photoURL)=>{
+        const userProfileDetails = {
+            displayName: name,
+            photoURL: photoURL,
+        }
+        authUpdate(userProfileDetails)
+            .then(()=>{})
+            .catch(error=>console.error(error));
     }
     return (
         <>
