@@ -4,6 +4,7 @@ import app from '../Firebase/Firebase.config';
 
 
 
+
  export const AuthContext = createContext();
  const auth = getAuth(app);
 
