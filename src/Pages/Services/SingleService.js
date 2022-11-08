@@ -15,7 +15,7 @@ const SingleService = ({service}) => {
                 <p>{description && description.slice(0,90)}...</p>
                 <div className="card-actions justify-end">
                     <Link to={`/serviceDetails/${_id}`}>
-                        <button className="btn btn-outline btn-warning">Details Service</button>
+                        <button className="btn btn-outline btn-warning">service Details</button>
                     </Link>
                 </div>
             </div>
