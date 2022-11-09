@@ -1,16 +1,45 @@
 
+import { useContext } from 'react';
+import toast from 'react-hot-toast';
 import { PhotoView } from 'react-photo-view';
 import { Link, useLoaderData } from 'react-router-dom';
+import { AuthContext } from '../../Contexts/AuthProvider';
 
 const ServiceDetails = () => {
+    const {user} = useContext(AuthContext)
     const {title,img,description,price,rating,_id}= useLoaderData();
 
     const handelReview=(event)=>{
         event.preventDefault();
-        const email=event.target.email.value;
+        const email=user?.email || "UnRegister";
         const serviceName=event.target.serviceName.value;
         const reviewText=event.target.reviewText.value;
         console.log(email,serviceName,reviewText);
+
+        const reviews={
+            service:_id,
+            serviceName,
+            email,
+            reviewText
+        }
+        fetch('http://localhost:5000/reviews',{
+            method:'POST',
+            headers:{
+                "content-type":"application/json"
+            },
+            body:JSON.stringify(reviews)
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            if(data.success){
+                toast.success(data.message)
+            }else{
+                toast.error(data.error)
+            }
+        })
+        .catch(err=>{
+            toast.error(err.error)
+        })
         event.target.reset();
     }
     return (
@@ -35,12 +64,14 @@ const ServiceDetails = () => {
                 </div>
             </div>
         </div>
+        {/* review section */}
+        
         <section className='lg:w-2/3 mx-auto mb-12 '>
             <h1 className='text-4xl font-bold text-center my-8'>Reviews</h1>
         <form onSubmit={handelReview}>
-        <input type="text" placeholder="Type here" name='serviceName' defaultValue={title} readOnly className="input input-ghost text-center w-full" disabled /> <br />
+            <input type="text" placeholder="Type here" name='serviceName' defaultValue={title} readOnly className="input input-ghost text-center w-full" disabled /> <br />
             <div className='mt-4 text-center'>
-                <input type="text" placeholder="Email" name='email' className="input input-bordered mb-2 input-warning w-1/2 " /> <br />
+                <input type="text" placeholder="Email" name='email' defaultValue={user?.email} className="input input-bordered mb-2 input-warning w-1/2 " readOnly/> <br />
                 <textarea className="textarea textarea-warning w-1/2 h-60" name='reviewText' placeholder="Give your best Reviews..."></textarea>
             </div>
             <div className="form-control w-1/2 mx-auto">
