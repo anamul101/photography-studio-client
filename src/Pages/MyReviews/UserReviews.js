@@ -29,8 +29,8 @@ const UserReviews = ({userReview, handelDelete}) => {
                 </h2>
                 <p>Reviews: {reviewText}</p>
                 <div className="card-actions justify-end">
-                <div onClick={()=>handelDelete(_id)} className="badge badge-outline cursor-pointer">DELETE</div> 
-                <div onClick={()=>handelUpdate(_id)} className="badge badge-outline">EDIT</div>
+                <div onClick={()=>handelDelete(_id)} className="btn btn-sm cursor-pointer btn-outline hover:btn-ghost">DELETE</div> 
+                <div onClick={()=>handelUpdate(_id)} className="btn btn-sm btn-outline hover:btn-ghost">EDIT</div>
                 </div>
             </div>
         </div>

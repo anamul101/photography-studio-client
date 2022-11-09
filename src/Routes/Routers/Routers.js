@@ -9,6 +9,7 @@ import ServiceDetails from "../../Pages/Services/ServiceDetails";
 import Services from "../../Pages/Services/Services";
 import SignIn from "../../Pages/SignIn/SignIn";
 import SignUp from "../../Pages/SignUp/SignUp";
+import PrivetRoutes from "../PrivetRoutes/PrivetRoutes";
 
 
 const { createBrowserRouter } = require("react-router-dom");
@@ -37,11 +38,11 @@ export const router = createBrowserRouter([
             },   
             {
                 path:'/reviews',
-                element:<MyReviews></MyReviews>
+                element:<PrivetRoutes><MyReviews></MyReviews></PrivetRoutes>
             },   
             {
                 path:'/addservice',
-                element:<AddService></AddService>
+                element:<PrivetRoutes><AddService></AddService></PrivetRoutes>
             },
             {
                 path:'/signup',

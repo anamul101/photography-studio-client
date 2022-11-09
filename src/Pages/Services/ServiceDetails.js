@@ -2,12 +2,13 @@
 import { useContext } from 'react';
 import toast from 'react-hot-toast';
 import { PhotoView } from 'react-photo-view';
-import { Link, useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider';
 
 const ServiceDetails = () => {
     const {user} = useContext(AuthContext)
     const {title,img,description,price,rating,_id}= useLoaderData();
+    const navigate = useNavigate()
 
     const handelReview=(event)=>{
         event.preventDefault();
@@ -32,7 +33,8 @@ const ServiceDetails = () => {
         .then(res=>res.json())
         .then(data=>{
             if(data.success){
-                toast.success(data.message)
+                toast.success(data.message);
+                navigate('/reviews')
             }else{
                 toast.error(data.error)
             }
@@ -42,6 +44,9 @@ const ServiceDetails = () => {
         })
         event.target.reset();
     }
+    // const backToLogin=()=>{
+    //     navigate('/signin')
+    // }
     return (
         <>
         <p className='text-2xl font-bold text-center mt-12 text-orange-600'><p className='text-black text-4xl font-bold'>Searvice of Name:</p> {title}</p>
@@ -64,11 +69,13 @@ const ServiceDetails = () => {
                 </div>
             </div>
         </div>
-        {/* review section */}
-        
+        {/* review */}
         <section className='lg:w-2/3 mx-auto mb-12 '>
             <h1 className='text-4xl font-bold text-center my-8'>Reviews</h1>
-        <form onSubmit={handelReview}>
+        <>
+            {
+                user?.uid?
+                <form onSubmit={handelReview}>
             <input type="text" placeholder="Type here" name='serviceName' defaultValue={title} readOnly className="input input-ghost text-center w-full" disabled /> <br />
             <div className='mt-4 text-center'>
                 <input type="text" placeholder="Email" name='email' defaultValue={user?.email} className="input input-bordered mb-2 input-warning w-1/2 " readOnly/> <br />
@@ -78,6 +85,14 @@ const ServiceDetails = () => {
                 <input className="btn btn-warning hover:bg-orange-500 mt-4" type="submit" value="Add Reviews" />
             </div>
         </form>
+                :
+                <div className="form-control w-1/2 mx-auto">
+                    <Link to='/signin'>
+                    <button className="btn btn-warning hover:bg-orange-500 mt-4">After login then Review</button>
+                    </Link>
+                </div>
+            }
+        </>
         </section>
         </>
     );
