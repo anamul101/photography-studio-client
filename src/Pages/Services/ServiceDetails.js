@@ -44,9 +44,9 @@ const ServiceDetails = () => {
         })
         event.target.reset();
     }
-    // const backToLogin=()=>{
-    //     navigate('/signin')
-    // }
+    const backToLogin=()=>{
+        navigate('/signin')
+    }
     return (
         <>
         <p className='text-2xl font-bold text-center mt-12 text-orange-600'><p className='text-black text-4xl font-bold'>Searvice of Name:</p> {title}</p>
@@ -87,9 +87,7 @@ const ServiceDetails = () => {
         </form>
                 :
                 <div className="form-control w-1/2 mx-auto">
-                    <Link to='/signin'>
-                    <button className="btn btn-warning hover:bg-orange-500 mt-4">After login then Review</button>
-                    </Link>
+                    <button onClick={backToLogin} className="btn btn-warning hover:bg-orange-500 mt-4">After login then Review</button>
                 </div>
             }
         </>

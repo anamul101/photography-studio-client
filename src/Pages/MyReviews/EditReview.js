@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 const EditReview = () => {
     const userReview = useParams();
     const {id} = userReview;
     const [userReviews, setUserReviews] = useState({});
-    const navigate = useNavigate();
     useEffect(()=>{
         fetch(`http://localhost:5000/reviews/${id}`)
         .then(res=>res.json())
@@ -15,6 +14,7 @@ const EditReview = () => {
     },[id])
    const handelReviewUpdate=(event)=>{
     event.preventDefault();
+    
     const userReviews ={
         newReview : event.target.newReview.value
     }
@@ -29,7 +29,6 @@ const EditReview = () => {
         .then(data=>{
             if(data.success){
                 toast.success(data.message);
-                navigate('/reviews')
             }else{
                 toast.error(data.error)
             }

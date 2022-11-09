@@ -60,6 +60,7 @@ const NavBar = () => {
                             <button className="btn">SIGNUP</button>
                         </Link> 
                     </>
+                    
                     }
                 </>
                 </nav>

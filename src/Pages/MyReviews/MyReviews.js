@@ -37,15 +37,19 @@ const MyReviews = () => {
     return (
         <div>
             <h1>My Reviews : {userReviews.length}</h1>
-            <div className='grid lg:grid-cols-3 lg:gap-8 lg:mx-20'>
-                {
-                    userReviews.map(userReview=><UserReviews
-                    key={userReview._id}
-                    userReview={userReview}
-                    handelDelete={ handelDelete}
-                    ></UserReviews>)
+            <>
+                { 
+                    <div className='grid lg:grid-cols-3 lg:gap-8 lg:mx-20'>
+                    {
+                        userReviews.map(userReview=><UserReviews
+                        key={userReview._id}
+                        userReview={userReview}
+                        handelDelete={ handelDelete}
+                        ></UserReviews>)
+                    }
+                    </div>
                 }
-            </div>
+            </>
         </div>
     );
 };
