@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider';
+import logo from '../../Assets/logo.png'
 
 const NavBar = () => {
     const {user,LogOut} = useContext(AuthContext);
@@ -18,8 +19,10 @@ const NavBar = () => {
                 to='/'
                 className='flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0'
                 >
-                <img className='w-15 h-10 rounded-md' src='/' alt="" />
-                <span className='ml-3 text-4xl text-bold'>MW PHOTOGRAPHY</span>
+                <div className='flex items-center'>
+                <img className='w-20 h-15 rounded-md mr-2' src={logo}alt="/" />
+                <span className='ml-3 text-4xl text-bold text-orange-600'>MWP</span>
+                </div>
             </Link>
             <nav className='md:ml-auto flex flex-wrap items-center text-base justify-center'>
                 <Link to='/home' className= 'mr-5 hover:text-gray-900'>
@@ -52,12 +55,12 @@ const NavBar = () => {
                     </>
                     :
                     <>
-                        <Link to='/signin' className='mr-5 hover:text-gray-900'>
-                            <button className="btn">SIGNIN</button>
+                        <Link to='/signin' className=' mr-5  '>
+                            <button className="btn bg-orange-700 border-orange-800  hover:bg-orange-500">SIGNIN</button>
                         </Link>
 
                         <Link to='/signup' className='mr-5 hover:text-gray-900'>
-                            <button className="btn">SIGNUP</button>
+                            <button className="btn btn-secondary">SIGNUP</button>
                         </Link> 
                     </>
                     

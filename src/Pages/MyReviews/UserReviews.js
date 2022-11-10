@@ -7,7 +7,7 @@ const UserReviews = ({userReview, handelDelete}) => {
     const navigate = useNavigate();
     
     useEffect(()=>{
-        fetch(`http://localhost:5000/services/${service}`)
+        fetch(`https://photography-studio-server.vercel.app/services/${service}`)
         .then(res=>res.json())
         .then(data=>setServices(data))
     },[service])

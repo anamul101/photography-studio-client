@@ -55,7 +55,7 @@ export const router = createBrowserRouter([
             {
                 path:'/serviceDetails/:id',
                 element:<ServiceDetails></ServiceDetails>,
-                loader:({params})=>fetch(`http://localhost:5000/services/${params.id}`)
+                loader:({params})=>fetch(`https://photography-studio-server.vercel.app/services/${params.id}`)
             },
             {
                 path:'/editreview/:id',

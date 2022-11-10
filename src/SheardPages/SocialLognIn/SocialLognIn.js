@@ -22,7 +22,7 @@ const SocialLognIn = () => {
                     email: user.email
                 }
                 
-                fetch('http://localhost:5000/jwt',{
+                fetch('https://photography-studio-server.vercel.app/jwt',{
                     method:'POST',
                     headers:{
                         "content-type": "application/json"

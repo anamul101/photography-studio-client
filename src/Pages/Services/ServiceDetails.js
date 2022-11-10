@@ -23,7 +23,7 @@ const ServiceDetails = () => {
             email,
             reviewText
         }
-        fetch('http://localhost:5000/reviews',{
+        fetch('https://photography-studio-server.vercel.app/reviews',{
             method:'POST',
             headers:{
                 "content-type":"application/json"
@@ -63,8 +63,8 @@ const ServiceDetails = () => {
                 <h2 className='text-xl font-bold text-orange-500'>Price: ${price}</h2>
                 <p className='text-gray-700'>{description}</p>
                 <div className="card-actions justify-end">
-                    <Link to={`/serviceDetails/${_id}`}>
-                        <button className="btn btn-outline btn-warning">service Details</button>
+                    <Link to='/addservice'>
+                        <button className="btn btn-outline btn-warning">ADD YOUR SERVICE</button>
                     </Link>
                 </div>
             </div>

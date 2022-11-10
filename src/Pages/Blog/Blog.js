@@ -2,9 +2,10 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 
 const Blog = () => {
-    <Helmet><title>blog</title></Helmet>
+   
     return (
         <div className='my-20 lg:mx-20'>
+            <h1 className='text-5xl text-center text-orange-600 mb-8'>BLOG</h1>
             <div tabIndex={0} className="collapse collapse-plus border border-base-300 bg-base-100 rounded-box mb-4">
                 <div className="collapse-title text-xl font-medium">
                 1. Difference between SQL and NoSQL?

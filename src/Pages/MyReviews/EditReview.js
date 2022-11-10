@@ -7,7 +7,7 @@ const EditReview = () => {
     const {id} = userReview;
     const [userReviews, setUserReviews] = useState({});
     useEffect(()=>{
-        fetch(`http://localhost:5000/reviews/${id}`)
+        fetch(`https://photography-studio-server.vercel.app/reviews/${id}`)
         .then(res=>res.json())
         .then(data=>setUserReviews(data.data))
         .catch(error=>console.error(error))
@@ -18,7 +18,7 @@ const EditReview = () => {
     const userReviews ={
         newReview : event.target.newReview.value
     }
-        fetch(`http://localhost:5000/reviews/${id}`,{
+        fetch(`https://photography-studio-server.vercel.app/reviews/${id}`,{
             method:'PUT',
             headers:{
                 "content-type":"application/json"
@@ -38,7 +38,7 @@ const EditReview = () => {
    }
     return (
         <section className='lg:w-2/3 mx-auto mb-12 '>
-            <h1 className='text-4xl font-bold text-center my-8'>Review Update Now</h1>
+            <h1 className='text-4xl font-bold text-center text-orange-600 my-8'>Review Update Now</h1>
         <form onSubmit={handelReviewUpdate}>
             <input type="text" placeholder="Type here" name='serviceName' defaultValue={userReviews?.serviceName} readOnly className="input input-ghost text-center w-full" disabled /> <br />
             <div className='mt-4 text-center'>

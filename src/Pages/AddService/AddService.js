@@ -19,7 +19,7 @@ const AddService = () => {
             description
         }
         // console.log(title,img,price,rating,description);
-        fetch('http://localhost:5000/services',{
+        fetch('https://photography-studio-server.vercel.app/services',{
             method:'POST',
             headers:{
                 "content-type":"application/json"
@@ -41,7 +41,7 @@ const AddService = () => {
     }
     return (
         <>
-            <h1 className='text-4xl font-bold mx-auto mt-4 text-center'>Add Your Photography Service</h1>
+            <h1 className='text-4xl font-bold mx-auto text-orange-600 mt-4 text-center'>Add Your Photography Service</h1>
            <form onSubmit={handelService} className="form-control lg:w-1/2 my-20 mx-auto rounded-md p-4 border-orange-700 border">
                <div className='grid lg:grid-cols-2 lg:gap-4'>
                         <div>
