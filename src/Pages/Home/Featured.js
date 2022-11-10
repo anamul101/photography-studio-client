@@ -4,7 +4,7 @@ const Featured = () => {
     return (
         <>
             <h1 className='text-5xl text-center text-orange-600 mt-12'>Featured Weddings</h1>
-            <div className='grid lg:grid-cols-3 lg:gap-8 mx-20 my-12'>
+            <div className='grid lg:grid-cols-3 gap-8 mx-20 my-12'>
                 <div>
                     <img src="https://www.lukebellphotography.co.uk/wp-content/uploads/2022/10/Cliveden-House-Wedding-Photography-354x200.jpg" alt="" />
                 </div>

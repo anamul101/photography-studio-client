@@ -5,15 +5,15 @@ const AboutUs = () => {
     return (
        <>
          <h1 className='text-5xl text-center text-orange-600 mt-12'>About Us</h1>
-        <div className="hero h-96">
-            <div className="hero-content flex-col lg:flex-row">
-                
-                <div>
-                <h1 className="text-5xl font-bold">Box Office News!</h1>
-                <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-                <button className="btn btn-primary">Get Started</button>
-                </div>
+        <div className=" my-8 ">
+            <div className="lg:w-1/2 mx-auto">
+                <h1 className='text-2xl text-left mb-4 text-orange-600'>Rangefinder Magazine Rising Star</h1>
+                <p>
+                My approach to photographing weddings and elopements is essentially driven by a need to capture important, thoughtful, and emotive instances in an interesting and artistic way. A deep breath as the ceremony begins. The nervous holding of hands. Tears during the speeches. Drunken singing – your mum’s terrible dancing – all of it. It’s about documenting these scenes in-between with feeling and empathy. <br />
+                I’ll be there, capturing you just as you are, with no awkward posing and no annoying requests for more shots. Just the two of you alongside your closest friends and family. Photographed in an easy-going and unobtrusive manner.
+                </p>
             </div>
+            
         </div>
        </>
     );

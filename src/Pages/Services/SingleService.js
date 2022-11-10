@@ -6,12 +6,15 @@ const SingleService = ({service}) => {
     const {title,description,price,rating,_id}=service;
     return (
         <div className="card w-96 bg-base-100 shadow-xl">
-            <figure><PhotoProvider>
+          
+            <figure>
+            <PhotoProvider>
                     <PhotoView src={service?.img}>
                         <img src={service?.img} alt={title} />
                     </PhotoView>
-                </PhotoProvider>
+            </PhotoProvider>
             </figure>
+            
             <div className="card-body">
                 <h2 className="card-title">
                     {title}
@@ -25,6 +28,7 @@ const SingleService = ({service}) => {
                     </Link>
                 </div>
             </div>
+            {/* The button to open modal */}
         </div>
     );
 };

@@ -7,7 +7,7 @@ import { AuthContext } from '../../Contexts/AuthProvider';
 
 
 const SocialLognIn = () => {
-    const {authSignInGoogle} = useContext(AuthContext);
+    const {authSignInGoogle,LogOut} = useContext(AuthContext);
     const googleProvider = new GoogleAuthProvider();
     const navigate = useNavigate()
     const location = useLocation();
@@ -29,7 +29,12 @@ const SocialLognIn = () => {
                     },
                     body: JSON.stringify(currentUser)
                 })
-                .then(res=>res.json())
+                .then(res=>{
+                    if(res.status === 401 || res.status === 403){
+                        LogOut();
+                    }
+                   return res.json()
+                })
                 .then(data=>{
                     localStorage.setItem('photography-token', data.token);
                     navigate(from, {replace:true});

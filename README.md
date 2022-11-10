@@ -1,3 +1,16 @@
+# Website Name : MODERN WEDDING PHOTOGRAPHY
+
+## Live link : https://mw-photography.web.app/
+
+## What is frameworks and libraries used in this website?
+
+1.Full site used javascript libray (React)
+2. For design used Tailwind CSS and DaisyUI
+3. For Routing used React Router
+4. For Authentication used Firebase
+5. For Aleart used React hot tost
+6. and use mongodb database
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

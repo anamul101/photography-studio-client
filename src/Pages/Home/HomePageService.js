@@ -10,7 +10,7 @@ const HomePageService = () => {
         .then(data=>setServices(data.data))
     },[])
     return (
-        <>
+        <div>
             <h1 className='text-5xl text-center text-orange-600 mt-12'>My Services</h1>
            
             <div className='grid lg:grid-cols-3 lg:gap-8 lg:mx-40 my-20'>
@@ -26,7 +26,7 @@ const HomePageService = () => {
                     <button className="btn btn-wide">See All</button>
                 </Link>
             </div>
-        </>
+        </div>
     );
 };
 
