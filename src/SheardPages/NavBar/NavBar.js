@@ -45,7 +45,7 @@ const NavBar = () => {
                     user?.uid?
                     <> 
                         
-                        <div className="tooltip tooltip-bottom cursor-pointer" data-tip={user?.displayName}>  
+                        <div>  
                             <img src={user?.photoURL} style={{height:'40px'}} className="rounded-full mr-4" alt="" /> 
                         </div>
                         <button onClick={handelLogout} className="btn border border-orange-500 bg-orange-500 hover:bg-orange-800">LogOut</button>
