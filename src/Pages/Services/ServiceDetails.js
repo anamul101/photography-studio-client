@@ -1,7 +1,6 @@
 
 import { useContext } from 'react';
 import toast from 'react-hot-toast';
-import { PhotoProvider, PhotoView } from 'react-photo-view';
 import { Link, useLoaderData, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider';
 
@@ -48,13 +47,13 @@ const ServiceDetails = () => {
         navigate('/signin')
     }
     return (
-        <PhotoProvider src={img}>
+        <>
         <p className='text-2xl font-bold text-center mt-12 text-orange-600'><p className='text-black text-4xl font-bold'>Searvice of Name:</p> {title}</p>
         <div className="lg:w-2/3 bg-base-400 mx-auto border border-gray-400 my-12 rounded-md">
         {/* <PhotoView src={img}>
             <img src={img} style={{ objectFit: 'cover' }} alt="" />
         </PhotoView> */}
-        <figure><PhotoView><img src={img} alt="Photography wedding" /></PhotoView></figure>
+        <figure><img src={img} alt="Photography wedding" /></figure>
             <div className="card-body">
                 <h2 className="card-title flex justify-between items-center">
                 <p className='text-3xl font-bold'>{title}</p>
@@ -91,8 +90,9 @@ const ServiceDetails = () => {
                 </div>
             }
         </>
+        
         </section>
-        </PhotoProvider>
+        </>
     );
 };
 
