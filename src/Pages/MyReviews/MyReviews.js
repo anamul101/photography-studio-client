@@ -7,7 +7,11 @@ const MyReviews = () => {
     const {user} = useContext(AuthContext);
     const [userReviews, setUserReviews] = useState([]);
     useEffect(()=>{
-        fetch(`http://localhost:5000/reviews?email=${user?.email}`)
+        fetch(`http://localhost:5000/reviews?email=${user?.email}`,{
+            headers:{
+                authorization:`bearer ${localStorage.getItem('photography-token')}`
+            }
+        })
         .then(res=>res.json())
         .then(data=>setUserReviews(data.data))
         .catch(error=>console.error(error))

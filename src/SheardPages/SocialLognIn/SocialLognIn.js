@@ -18,23 +18,22 @@ const SocialLognIn = () => {
             .then((result)=>{
                 const user = result.user;
                 console.log(user);
-                navigate(from, {replace:true});
-                // const currentUser={
-                //     email: user.email
-                // }
+                const currentUser={
+                    email: user.email
+                }
                 
-                // fetch('https://genius-car-server-three-tau.vercel.app/jwt',{
-                //     method:'POST',
-                //     headers:{
-                //         "content-type": "application/json"
-                //     },
-                //     body: JSON.stringify(currentUser)
-                // })
-                // .then(res=>res.json())
-                // .then(data=>{
-                //     localStorage.setItem('geniousToken', data.token);
-                //     navigate(from, {replace:true});
-                // })
+                fetch('http://localhost:5000/jwt',{
+                    method:'POST',
+                    headers:{
+                        "content-type": "application/json"
+                    },
+                    body: JSON.stringify(currentUser)
+                })
+                .then(res=>res.json())
+                .then(data=>{
+                    localStorage.setItem('photography-token', data.token);
+                    navigate(from, {replace:true});
+                })
             })
             .catch(error=>{
                 toast.error(error.message);
