@@ -21,9 +21,9 @@ const HomePageService = () => {
                     ></SingleService>)
                 }
             </div>
-            <div className='mx-auto my-8 w-96'>
+            <div className='mx-auto text-center my-8 w-96'>
                 <Link to ='/services'>
-                    <button className="btn btn-wide">See All</button>
+                    <button className="btn btn-wide text-xl font-semibold bg-rose-700 hover:bg-red-800">See All</button>
                 </Link>
             </div>
         </div>
